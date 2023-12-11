@@ -62,6 +62,24 @@ void inorder(struct bstnode *ptr)
 		inorder(ptr->rchild);
 	}	
 }
+void preorder(struct bstnode *ptr)
+{
+	if(ptr!=NULL)
+	{
+		printf("\n%d ",ptr->key);
+		preorder(ptr->lchild);
+		preorder(ptr->rchild);
+	}	
+}
+void postorder(struct bstnode *ptr)
+{
+	if(ptr!=NULL)
+	{
+		postorder(ptr->lchild);
+		postorder(ptr->rchild);	
+		printf("\n%d ",ptr->key);
+	}	
+}
 void search(int item)
 {
 	struct bstnode *ptr=root;
@@ -166,7 +184,12 @@ int main()
 	insert(7);
 	insert(6);
 	insert(8);
+	printf("\ninorder of root is:\n");
 	inorder(root);
+	printf("\npreorder of root is:\n");
+	preorder(root);
+	printf("\npostorder of root is:\n");
+	postorder(root);
 	search(8);
 	search(11);
 	delete(4);
