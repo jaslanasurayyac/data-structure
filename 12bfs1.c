@@ -10,7 +10,7 @@ int front=-1,rear=-1;
 int graph[5][5];
 //visit array 0 rep. not visited and 1 rep. visited
 int visit[5]={0,0,0,0,0};
-int V;
+int V,type,E;
 
 void getMatrix(int V)
 {
@@ -22,6 +22,27 @@ void getMatrix(int V)
 			scanf("%d",&graph[i][j]);
 		}
 	}
+}
+void createMatrix(int V,int E,int type)
+{
+	int i,j;
+	int E1,E2;
+	for(i=0;i<V;i++)
+	{
+		for(j=0;j<V;j++)
+		{
+			graph[i][j]=0;
+		}
+	}
+	for(i=0;i<E;i++)
+	{
+		scanf("%d",&E1);
+		scanf("%d",&E2);
+		graph[E1][E2]=1;
+		if(type==2)
+			graph[E2][E1]=1;
+	}
+	
 }
 void enqueue(int key)
 {
@@ -107,10 +128,13 @@ int main()
 	printf("Enter the number of vertices:");
 	scanf("%d",&V);
 	getMatrix(V);
+
 	printf("Enter the type of graph(enter 1 for directed ):");
 	scanf("%d",&type);
 	
-	
+	printf("Enter the number of edges:");
+	scanf("%d",&E);
+
 	printf("BFS traversal is: ");
 	bfs(0);
 
